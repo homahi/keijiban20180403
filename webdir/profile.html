@@ -21,11 +21,11 @@
 		</div>
 	</header>
 
-	<div class="container">
+	<div class="container" id="profile">
 		<h1>ID</h1>
 		<p>tanaka_0127</p>
 		<h1>名前</h1>
-		<p>田中</p>
+		<p>{{name}}</p>
 		<h1>住所</h1>
 		<p>梶ヶ谷</p>
 	</div>
@@ -38,6 +38,16 @@
 	 crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 	 crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
+	<script>
+		var app = new Vue({
+			el: '#profile',
+			data: {
+				name: 'Hello Vue!'
+			}
+		})
+	</script>
 
 </body>
 
