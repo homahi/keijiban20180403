@@ -12,7 +12,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Contributions'
+                $ref: '#/components/schemas/ContributionList'
 components:
   schemas:
     Contribution:
@@ -28,7 +28,14 @@ components:
           type: string
         body:
           type: string
-    Contributions:
+      example:
+        - id: 3
+          contributor: "前川みく"
+          body: "みくの初投稿だにゃん"
+        - id: 4
+          contributor: "小日向美穂"
+          body: "プロデューサーさん！"
+    ContributionList:
       type: array
       items:
         $ref: '#/components/schemas/Contribution'
