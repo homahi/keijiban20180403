@@ -22,9 +22,9 @@ function getinfo(request,response){
 function response_index(request,response){
   if (request.method=="GET"){
     var content = {
-      title:"タイトル",
-      id:"id",
-      msg:"メッセージ",
+      id:1,
+      contributor:"前川みく",
+      body:"テストメッセージ",
     };
     response.writeHead(200,{'Content-Type': 'application/json'});
     response.write(JSON.stringify(content));
