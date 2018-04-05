@@ -1,0 +1,10 @@
+version: '3'
+services:
+
+  apache:
+    container_name: myapache
+    image: httpd:2.4.33-alpine
+    ports:
+      - 8080:80
+    volumes:
+      - ./webdir:/usr/local/apache2/htdocs/
