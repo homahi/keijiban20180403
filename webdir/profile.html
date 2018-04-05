@@ -23,11 +23,11 @@
 
 	<div class="container" id="profile">
 		<h1>ID</h1>
-		<p>tanaka_0127</p>
+		<p>{{id}}</p>
 		<h1>名前</h1>
 		<p>{{name}}</p>
 		<h1>住所</h1>
-		<p>梶ヶ谷</p>
+		<p>{{address}}</p>
 	</div>
 
 	<!-- オプションのJavaScript -->
@@ -44,13 +44,16 @@
 		const promise = jQuery.getJSON('/api/stub.json');
 		promise.then(value => {
 			console.log(value);
+			var app = new Vue({
+				el: '#profile',
+				data: {
+					name: value.name,
+					id:value.id,
+					address:value.address					
+				}
+			});
 		});
-		var app = new Vue({
-			el: '#profile',
-			data: {
-				name: 'Hello Vue!'
-			}
-		});
+
 	</script>
 
 </body>
