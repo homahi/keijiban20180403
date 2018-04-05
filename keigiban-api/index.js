@@ -21,11 +21,12 @@ function getinfo(request,response){
 
 function response_index(request,response){
   if (request.method=="GET"){
-    var content = {
-      id:1,
-      contributor:"前川みく",
-      body:"テストメッセージ",
-    };
+    var content = [{id:1,contributor:"前川みく",body:"テストメッセージ１",},
+    {id:2,contributor:"ほまひ",body:"テストメッセージ２",},
+    {id:3,contributor:"ippei",body:"テストメッセージ３",},
+    {id:4,contributor:"かずま",body:"テストメッセージ４",},
+    {id:5,contributor:"tak",body:"テストメッセージ５",}  
+  ];
     response.writeHead(200,{'Content-Type': 'application/json'});
     response.write(JSON.stringify(content));
     response.end();
