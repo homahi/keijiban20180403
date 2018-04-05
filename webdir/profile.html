@@ -41,7 +41,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
 
 	<script>
-		const promise = jQuery.getJSON(('~~~'))
+		const promise = jQuery.getJSON('/api/stub.json');
 		promise.then(value => {
 			console.log(value);
 		});
