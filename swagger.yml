@@ -30,5 +30,14 @@ components:
           type: string
     Contributions:
       type: array
+      example:
+        - id: 7
+          contributor: homahi
+          body: Hello developers!
+        - id: 38
+          contributor: doektak
+          body: |
+            lorem ipsum
+            multi lined message here.
       items:
         $ref: '#/components/schemas/Contribution'
