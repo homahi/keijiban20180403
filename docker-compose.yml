@@ -8,3 +8,15 @@ services:
       - 8080:80
     volumes:
       - ./webdir:/usr/local/apache2/htdocs/
+
+  node:
+    container_name: mynode
+    image: node:8.11.1-alpine
+    ports:
+      - 8081:8000
+    working_dir: /home/node/app
+    volumes:
+      - ./keigiban-api:/home/node/app
+    environment:
+      - NODE_ENV=production
+    command: node index.js
