@@ -1,3 +1,12 @@
-{
-  "name": "doektak"
-}
+[
+  {
+    "id": 7,
+    "contributor": "homahi",
+    "body": "Hello developers!"
+  },
+  {
+    "id": 38,
+    "contributor": "doektak",
+    "body": "lorem ipsum\nmulti lined message here.\n"
+  }
+]
