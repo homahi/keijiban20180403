@@ -46,7 +46,7 @@
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
 
   <script>
-    const promise = jQuery.getJSON('//localhost:8081/index');
+    const promise = jQuery.getJSON(`//${location.hostname}:8000/index`);
     promise.then(value => {
       console.log(value)
       var app = new Vue({
