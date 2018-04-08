@@ -28,8 +28,8 @@ function response_index(request,response){
     ]
     }).then((list)=>{
       list.forEach(list =>{
-      var addlist = {id:list.id,contributor:list.contributor,body:list.body};
-     var result = content.push(addlist);
+      var item = {id:list.id,contributor:list.contributor,body:list.body};
+     var result = content.push(item);
      console.log(content);
     });
       console.info('データ取得されました');
