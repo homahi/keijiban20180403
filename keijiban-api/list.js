@@ -1,7 +1,7 @@
 'use strict';
 const Sequelize = require('sequelize');
 const sequelize = new Sequelize(
-  'postgres://postgres:postgres@localhost/keigiban',
+  'postgres://postgres:postgres@localhost/keijiban',
   { logging: false });
 const list = sequelize.define('lists', {
   id: {
