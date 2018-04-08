@@ -7,6 +7,11 @@ console.log('Server Start');
 
 //createServerの処理
 function getinfo(request,response){
+  response.setHeader('Access-Control-Allow-Origin', '*');
+  response.setHeader('Access-Control-Request-Method', '*');
+  response.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET');
+  response.setHeader('Access-Control-Allow-Headers', '*');
+
   var url_parts = url.parse(request.url,true);
   switch (url_parts.pathname){
     case '/index':
