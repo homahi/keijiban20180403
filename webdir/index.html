@@ -1,40 +1,63 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>一覧画面</title>
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
 </head>
+
 <body>
-<div class="container">
+  <div class="container" id="keijiban">
     <h1>一覧画面</h1>
-    <div class="card">
-        <div class="card-header">
-          朝活について
-        </div>
-        <div class="card-body">
-          <blockquote class="blockquote mb-0">
-            <p>寝坊せず頑張っていきましょう</p>
-            <footer class="blockquote-footer"><cite title="Source Title">投稿者:梶が谷太郎　投稿日:2018/03/30/(金)</cite></footer>
-          </blockquote>
-          
-        </div>
+    <div class="card" v-for="card in cardlist">
+      <div class="card-header">
+        {{card.id}}
       </div>
-      <br> 
+      <div class="card-body">
+        <blockquote class="blockquote mb-0">
+          <p>{{card.body}}</p>
+          <footer class="blockquote-footer">
+            <cite title="Source Title">投稿者:{{card.contributor}}　投稿日:</cite>
+          </footer>
+        </blockquote>
+
+      </div>
+    </div>
+    <br>
 
     <button type="button" class="btn btn-primary">投稿</button>
-        
-</div>
+
+  </div>
 
 
-   <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
+  <script>
+    const promise = jQuery.getJSON(`//${location.hostname}:8000/index`);
+    promise.then(value => {
+      console.log(value)
+      var app = new Vue({
+        el: '#keijiban',
+        data: {
+          cardlist: value
+        }
+      });
+    });
+  </script>
 
 </body>
+
 </html>
