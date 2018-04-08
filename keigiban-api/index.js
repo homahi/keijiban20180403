@@ -22,12 +22,6 @@ function getinfo(request,response){
 function response_index(request,response){
   if (request.method=="GET"){
     var content = [];
-    //   var content = [
-  //   {id:2,contributor:"ほまひ",body:"テストメッセージ２"},
-  //   {id:3,contributor:"ippei",body:"テストメッセージ３"},
-  //   {id:4,contributor:"かずま",body:"テストメッセージ４"},
-  //   {id:5,contributor:"tak",body:"テストメッセージ５"}  
-  // ];
     list.findAll({
       order: [
         ['id', 'DESC']
