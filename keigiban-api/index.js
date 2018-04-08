@@ -21,18 +21,31 @@ function getinfo(request,response){
 }
 function response_index(request,response){
   if (request.method=="GET"){
-    var content = [{id:1,contributor:"前川みく",body:"テストメッセージ１",},
-    {id:2,contributor:"ほまひ",body:"テストメッセージ２"},
-    {id:3,contributor:"ippei",body:"テストメッセージ３"},
-    {id:4,contributor:"かずま",body:"テストメッセージ４"},
-    {id:5,contributor:"tak",body:"テストメッセージ５"}  
-  ];
-    response.writeHead(200,{'Content-Type': 'application/json'});
-    response.write(JSON.stringify(content));
-    response.end();
+    var content = [];
+    //   var content = [
+  //   {id:2,contributor:"ほまひ",body:"テストメッセージ２"},
+  //   {id:3,contributor:"ippei",body:"テストメッセージ３"},
+  //   {id:4,contributor:"かずま",body:"テストメッセージ４"},
+  //   {id:5,contributor:"tak",body:"テストメッセージ５"}  
+  // ];
+    list.findAll({
+      order: [
+        ['id', 'DESC']
+    ]
+    }).then((list)=>{
+      list.forEach(list =>{
+      var addlist = {id:list.id,contributor:list.contributor,body:list.body};
+     var result = content.push(addlist);
+     console.log(content);
+    });
+      console.info('データ取得されました');
+      response.writeHead(200,{'Content-Type': 'application/json'});
+      response.write(JSON.stringify(content));  
+      response.end();
+    });
   }else if(request.method=="POST"){
     list.create({
-          contributor: 'ippei',
+          contributor: 'はらの',
           body: 'テストメッセージ２'
         });
     console.info('投稿されました');

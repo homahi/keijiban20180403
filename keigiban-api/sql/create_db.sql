@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS keigiban;
+CREATE DATABASE keigiban;
