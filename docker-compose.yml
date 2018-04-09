@@ -16,7 +16,7 @@ services:
       - 8000:8000
     working_dir: /home/node/app
     volumes:
-      - ./keigiban-api:/home/node/app
+      - ./keijiban-api:/home/node/app
     environment:
-      - NODE_ENV=production
-    command: node index.js
+      - DB_HOST=postgres
+    command: npm run installStart

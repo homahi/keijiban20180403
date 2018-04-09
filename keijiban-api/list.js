@@ -1,7 +1,7 @@
 'use strict';
 const Sequelize = require('sequelize');
 const sequelize = new Sequelize(
-  'postgres://postgres:postgres@localhost/keijiban',
+  `postgres://postgres:postgres@${process.env.DB_HOST || 'localhost'}/keijiban`,
   { logging: false });
 const list = sequelize.define('lists', {
   id: {
@@ -15,10 +15,10 @@ const list = sequelize.define('lists', {
   body: {
     type: Sequelize.STRING
   }
-},{
-  freezeTableName: true,
-  timestamps: true
-});
+}, {
+    freezeTableName: true,
+    timestamps: true
+  });
 
 list.sync();
 module.exports = list;
