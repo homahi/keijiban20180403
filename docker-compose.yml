@@ -17,6 +17,14 @@ services:
     working_dir: /home/node/app
     volumes:
       - ./keijiban-api:/home/node/app
+    links:
+      - postgres:postgres
     environment:
       - DB_HOST=postgres
     command: npm run installStart
+
+  postgres:
+    container_name: mypostgres
+    image: postgres:10.3-alpine
+    volumes:
+      - ./data:/var/lib/postgresql/data
