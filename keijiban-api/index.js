@@ -14,7 +14,8 @@ function getinfo(request,response){
     response_index(request,response);
     break;
     default:
-      response.writeHead(200,{'Content-Type':'text/html'});
+      response.writeHead(200,{'Content-Type':'text/html',"Access-Control-Allow-Origin":"*"});
+      response.
       response.end('no page...');
       break;
   }
