@@ -16,7 +16,15 @@ services:
       - 8000:8000
     working_dir: /home/node/app
     volumes:
-      - ./keigiban-api:/home/node/app
+      - ./keijiban-api:/home/node/app
+    links:
+      - postgres:postgres
     environment:
-      - NODE_ENV=production
-    command: node index.js
+      - DB_HOST=postgres
+    command: npm run installStart
+
+  postgres:
+    container_name: mypostgres
+    image: postgres:10.3-alpine
+    volumes:
+      - ./data:/var/lib/postgresql/data
