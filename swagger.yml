@@ -20,6 +20,7 @@ components:
         - id
         - contributor
         - body
+        - createdate
       properties:
         id:
           type: integer
@@ -28,13 +29,17 @@ components:
           type: string
         body:
           type: string
+        createdate:
+          type: string
       example:
         - id: 3
           contributor: "前川みく"
           body: "みくの初投稿だにゃん"
+          createdate: "2018年04月11日 12時00分01秒"
         - id: 4
           contributor: "小日向美穂"
           body: "プロデューサーさん！"
+          createdate: "2018年04月12日 12時00分01秒"
     ContributionList:
       type: array
       items:
