@@ -13,6 +13,16 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ContributionList'
+    post:
+      summary: 掲示板投稿
+      responses:
+        '200':
+          description: 新規投稿
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContributionList'
+
 components:
   schemas:
     Contribution:
@@ -20,6 +30,7 @@ components:
         - id
         - contributor
         - body
+        - createdAt
       properties:
         id:
           type: integer
@@ -28,14 +39,19 @@ components:
           type: string
         body:
           type: string
+        createAt:
+          type: string
       example:
         - id: 3
           contributor: "前川みく"
           body: "みくの初投稿だにゃん"
+          createAt: "2018-04-11T12:00:01"
         - id: 4
           contributor: "小日向美穂"
           body: "プロデューサーさん！"
+          createAt: "2018-04-12T12:00:01"
     ContributionList:
       type: array
       items:
         $ref: '#/components/schemas/Contribution'
+

@@ -2,6 +2,7 @@ const http = require('http');
 const url = require('url');
 const fs = require('fs'); 
 const list = require('./list');
+var dateformat = require('dateformat');
 var server = http.createServer(getinfo);
 server.listen(8000);
 console.log('Server Start');
@@ -29,8 +30,9 @@ function response_index(request,response){
     ]
     }).then((list)=>{
       list.forEach(list =>{
-      var item = {id:list.id,contributor:list.contributor,body:list.body};
-     var result = content.push(item);
+      var createdAt = dateformat(list.createdAt, 'yyyy-mm-ddTHH:MM:ss');
+      var item = {id:list.id,contributor:list.contributor,body:list.body,createdAt:createdAt};
+      var result = content.push(item);
      console.log(content);
     });
       console.info('データ取得されました');
@@ -39,10 +41,28 @@ function response_index(request,response){
       response.end();
     });
   }else if(request.method=="POST"){
+    var createdAt = new Date();
     list.create({
           contributor: 'はらの',
-          body: 'テストメッセージ２'
+          body: 'テストメッセージ２',
+          createdAt:createdAt
         });
     console.info('投稿されました');
+    var content = [];
+    list.findAll({
+      order: [
+        ['id', 'DESC']
+    ]
+    }).then((list)=>{
+      list.forEach(list =>{
+      var createdAt = dateformat(list.createdAt, 'yyyy-mm-ddTHH:MM:ss');
+      var item = {id:list.id,contributor:list.contributor,body:list.body,createdAt:createdAt};
+      var result = content.push(item);
+    });
+      console.info('データ取得されました');
+      response.writeHead(200,{'Content-Type': 'application/json'});
+      response.write(JSON.stringify(content));  
+      response.end();
+    }); 
   }
 }
