@@ -58,7 +58,7 @@
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
 
   <script>
-    const promise = jQuery.getJSON(`//${location.hostname}:8000/index`);
+    const promise = jQuery.getJSON(`//${location.hostname}:8000/contribution`);
     promise.then(value => {
       console.log(value)
       var app = new Vue({
@@ -78,7 +78,7 @@
               postedName: this.postedName,
               message: this.message
             }
-            jQuery.post(`//${location.hostname}:8000/index`, req).then(resp => {
+            jQuery.post(`//${location.hostname}:8000/contribution`, req).then(resp => {
               console.log(resp);
             });
           }
