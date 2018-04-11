@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "installStart": "npm install && node index.js",
+    "installStart:wait": "npm install && sleep 20s && node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

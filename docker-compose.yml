@@ -21,7 +21,7 @@ services:
       - postgres:postgres
     environment:
       - DB_HOST=postgres
-    command: npm run installStart
+    command: npm run installStart:wait
 
   postgres:
     container_name: mypostgres
