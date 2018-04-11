@@ -29,8 +29,8 @@ function response_index(request,response){
     ]
     }).then((list)=>{
       list.forEach(list =>{
-      var createdate = dateformat(list.createdAt, 'yyyy-mm-ddTHH:MM:ss');
-      var item = {id:list.id,contributor:list.contributor,body:list.body,createdate:createdate};
+      var createdAt = dateformat(list.createdAt, 'yyyy-mm-ddTHH:MM:ss');
+      var item = {id:list.id,contributor:list.contributor,body:list.body,createdAt:createdAt};
       var result = content.push(item);
      console.log(content);
     });
@@ -40,11 +40,11 @@ function response_index(request,response){
       response.end();
     });
   }else if(request.method=="POST"){
-    var dateAt = new Date();
+    var createdAt = new Date();
     list.create({
           contributor: 'はらの',
           body: 'テストメッセージ２',
-          createdAt:dateAt
+          createdAt:createdAt
         });
     console.info('投稿されました');
     var content = [];
@@ -54,8 +54,8 @@ function response_index(request,response){
     ]
     }).then((list)=>{
       list.forEach(list =>{
-      var createdate = dateformat(list.createdAt, 'yyyy-mm-ddTHH:MM:ss');
-      var item = {id:list.id,contributor:list.contributor,body:list.body,createdate:createdate};
+      var createdAt = dateformat(list.createdAt, 'yyyy-mm-ddTHH:MM:ss');
+      var item = {id:list.id,contributor:list.contributor,body:list.body,createdAt:createdAt};
       var result = content.push(item);
     });
       console.info('データ取得されました');
