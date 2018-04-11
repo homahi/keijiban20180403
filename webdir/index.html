@@ -13,6 +13,18 @@
 
 <body>
   <div class="container" id="keijiban">
+    <form>
+      <div class="form-group">
+        <label>投稿者</label>
+        <input type="text" class="form-control" id="name" v-model="postedName">
+      </div>
+      <div class="form-group">
+        <label>投稿内容</label>
+        <textarea class="form-control" rows="3" id="message" v-model="message" placeholder="投稿内容を入力してください"></textarea>
+      </div>
+      <button type="button" class="btn btn-primary" v-on:click="post">投稿</button>
+    </form>
+
     <h1>一覧画面</h1>
     <div class="card" v-for="card in cardlist">
       <div class="card-header">
@@ -30,7 +42,7 @@
     </div>
     <br>
 
-    <button type="button" class="btn btn-primary">投稿</button>
+
 
   </div>
 
@@ -52,7 +64,24 @@
       var app = new Vue({
         el: '#keijiban',
         data: {
-          cardlist: value
+          cardlist: value,
+          message: '',
+          postedName: ''
+        },
+        methods: {
+          post: function (event) {
+            console.log({
+              postedName: this.postedName,
+              message: this.message
+            });
+            const req = {
+              postedName: this.postedName,
+              message: this.message
+            }
+            jQuery.post(`//${location.hostname}:8000/index`, req).then(resp => {
+              console.log(resp);
+            });
+          }
         }
       });
     });
