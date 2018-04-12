@@ -41,12 +41,19 @@ function response_index(request,response){
       response.end();
     });
   }else if(request.method=="POST"){
-    var createdAt = new Date();
-    list.create({
-          contributor: 'はらの',
-          body: 'テストメッセージ２',
+    let body = [];
+    request.on('data', (chunk) => {
+    body.push(chunk);
+      }).on('end', () => {
+        var createdAt = new Date();
+        body = Buffer.concat(body).toString();
+        var item =JSON.parse(body);
+        list.create({
+          contributor: item.contributor,
+          body: item.body,
           createdAt:createdAt
         });
+      });
     console.info('投稿されました');
     var content = [];
     list.findAll({
