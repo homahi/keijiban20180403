@@ -73,7 +73,10 @@
             console.log({
               postedName: this.postedName,
               message: this.message
+
             });
+            this.postedName = '';
+            this.message = '';
             const req = {
               postedName: this.postedName,
               message: this.message
