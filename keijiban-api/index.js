@@ -1,6 +1,6 @@
 const http = require('http');
 const url = require('url');
-const fs = require('fs'); 
+const fs = require('fs');
 const list = require('./list');
 var dateformat = require('dateformat');
 var server = http.createServer(getinfo);
@@ -11,8 +11,8 @@ console.log('Server Start');
 function getinfo(request,response){
   var url_parts = url.parse(request.url,true);
   switch (url_parts.pathname){
-    case '/index':
-    response_index(request,response);
+    case '/contribution':
+    response_contribution(request,response);
     break;
     default:
       response.writeHead(200,{'Content-Type':'text/html',"Access-Control-Allow-Origin":"*"});
@@ -21,7 +21,7 @@ function getinfo(request,response){
       break;
   }
 }
-function response_index(request,response){
+function response_contribution(request,response){
   if (request.method=="GET"){
     var content = [];
     list.findAll({
@@ -37,7 +37,7 @@ function response_index(request,response){
     });
       console.info('データ取得されました');
       response.writeHead(200,{'Content-Type': 'application/json',"Access-Control-Allow-Origin":"*"});
-      response.write(JSON.stringify(content));  
+      response.write(JSON.stringify(content));
       response.end();
     });
   }else if(request.method=="POST"){
@@ -68,8 +68,8 @@ function response_index(request,response){
     });
       console.info('データ取得されました');
       response.writeHead(200,{'Content-Type': 'application/json'});
-      response.write(JSON.stringify(content));  
+      response.write(JSON.stringify(content));
       response.end();
-    }); 
+    });
   }
 }
